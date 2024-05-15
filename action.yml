@@ -73,5 +73,7 @@ runs:
     - run: ${{ github.action_path }}/setup_pip.ps1
       shell: pwsh
       env:
+        # Temporary workaround for Python 3.5 failures - May 2024
+        PIP_TRUSTED_HOST: "pypi.python.org pypi.org files.pythonhosted.org"
         PYTHON_VERSION: ${{ steps.setup.outputs.python-version }}
         SETUP_PYTHON_PATH: ${{ steps.setup.outputs.python-path }}
